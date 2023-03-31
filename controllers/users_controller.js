@@ -38,6 +38,18 @@ module.exports.create = async function (req, res){
 
 // to sign in and create session
 
-module.exports.createSession = function (req,res){
-    // to do laterw
+module.exports.createSession = async function (req,res){
+    const userFound = await User.findOne({email: req.body.email});
+    try {
+        if(userFound){
+            if(userFound.password != req.body.password){
+                return res.redirect('back');
+            }
+            res.cookie('user_id', userFound.id);
+            return res.redirect('/users/profile');
+        }
+        return res.redirect('back');
+    }catch (err){
+        console.log(err);
+    }
 }
