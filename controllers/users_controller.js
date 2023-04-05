@@ -37,7 +37,7 @@ module.exports.create = async function (req, res){
 }
 
 // to sign in and create session
-
+/*
 module.exports.createSession = async function (req,res){
     const userFound = await User.findOne({email: req.body.email});
     try {
@@ -52,4 +52,4 @@ module.exports.createSession = async function (req,res){
     }catch (err){
         console.log(err);
     }
-}
+}*/
